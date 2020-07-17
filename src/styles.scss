@@ -4,13 +4,17 @@
 
 body {
   background-color: rgba(25, 25, 25, 1);
-  color: #fff;
+  color: #aeadf0;
   min-height: 100vh;
   overflow: hidden;
   display: flex;
   flex-direction: column;
   align-items: center;
   margin: 0;
+}
+
+.breath-indicator {
+  margin: 0 auto;
 }
 
 .circle-container {
@@ -35,15 +39,29 @@ body {
   z-index: -1;
 }
 
+@keyframes exhale {
+  from {
+    box-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #aeadf0, 0 0 40px #aeadf0,
+      0 0 50px #aeadf0, 0 0 60px #aeadf0, 0 0 70px #aeadf0;
+  }
+  to {
+    box-shadow: 0 0 20px #fff, 0 0 30px #c2c8ff, 0 0 40px #c2c8ff,
+      0 0 50px #c2c8ff, 0 0 60px #c2c8ff, 0 0 70px #c2c8ff, 0 0 80px #c2c8ff;
+  }
+}
+
+@keyframes inhale {
+  from {
+    box-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #05a8aa, 0 0 40px #05a8aa,
+      0 0 50px #05a8aa, 0 0 60px #05a8aa, 0 0 70px #05a8aa;
+  }
+  to {
+    box-shadow: 0 0 20px #fff, 0 0 30px #059c9e, 0 0 40px #059c9e,
+      0 0 50px #059c9e, 0 0 60px #059c9e, 0 0 70px #059c9e, 0 0 80px #059c9e;
+  }
+}
+
 .gradient-circle {
-  background: conic-gradient(
-    #fff 0%,
-    #fff 40%,
-    #fff 40%,
-    #fff 60%,
-    #fff 60%,
-    #fff 100%
-  );
   height: 320px;
   width: 320px;
   z-index: -2;
@@ -53,12 +71,49 @@ body {
   left: -10px;
 }
 
+.breathIndicatorText {
+  color: white;
+  z-index: 100;
+  transition: opacity 0.5s linear;
+}
+
+.hold-animation {
+  animation: hold 1s ease-in-out infinite alternate;
+}
+
+.inhale-animation {
+  animation: inhale 1s ease-in-out infinite alternate;
+}
+
+.exhale-animation {
+  animation: exhale 1s ease-in-out infinite alternate;
+}
+
+@keyframes hold {
+  from {
+    box-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #ff5666, 0 0 40px #ff5666,
+      0 0 50px #ff5666, 0 0 60px #ff5666, 0 0 70px #ff5666;
+  }
+  to {
+    box-shadow: 0 0 20px #fff, 0 0 30px #ff475a, 0 0 40px #ff475a,
+      0 0 50px #ff475a, 0 0 60px #ff475a, 0 0 70px #ff475a, 0 0 80px #ff475a;
+  }
+}
+
 .pointer {
-  background-color: #fff;
   border-radius: 50%;
   height: 20px;
   width: 20px;
   display: block;
+  animation: spin 19s linear infinite;
+  background-color: #e8e9ed;
+}
+
+@keyframes spin {
+  100% {
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
 }
 
 .pointer-container {
@@ -91,7 +146,7 @@ body {
   }
 
   to {
-    transform: scale(1.2);
+    transform: scale(1.5);
   }
 }
 
@@ -101,7 +156,7 @@ body {
 
 @keyframes shrink {
   from {
-    transform: scale(1.2);
+    transform: scale(1.5);
   }
 
   to {

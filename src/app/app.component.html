@@ -1,13 +1,16 @@
-<div id="breath-indicator">
-  <div class="circle-container" [ngClass]="handleSize()">
-    <div class="circle"></div>
+<div class="container">
+  <div style="height: 30vh;"></div>
+  <div class="breath-indicator">
+    <div class="circle-container" [ngClass]="handleSize()">
+      <div class="circle"></div>
 
-    <p id="breathIndicatorText">{{ breathText }}</p>
+      <p class="breathIndicatorText">Round {{ rounds }}: {{ breathText }}</p>
 
-    <div class="pointer-container">
-      <div class="pointer"></div>
+      <div class="pointer-container">
+        <div class="pointer"></div>
+      </div>
+
+      <div class="gradient-circle" [ngClass]="handleColor()"></div>
     </div>
-
-    <div class="gradient-circle"></div>
   </div>
 </div>
