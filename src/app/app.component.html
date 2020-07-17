@@ -1,1 +1,13 @@
-<div id="breath-indicator" #breathIndicator></div>
+<div id="breath-indicator">
+  <div class="circle-container" [ngClass]="handleSize()">
+    <div class="circle"></div>
+
+    <p id="breathIndicatorText">{{ breathText }}</p>
+
+    <div class="pointer-container">
+      <div class="pointer"></div>
+    </div>
+
+    <div class="gradient-circle"></div>
+  </div>
+</div>
